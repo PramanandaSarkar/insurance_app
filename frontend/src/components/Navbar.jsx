@@ -1,4 +1,4 @@
-import React from 'react';
+// Import necessary libraries and hooks
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
@@ -12,17 +12,66 @@ const Navbar = () => {
   };
 
   return (
-    <nav>
-      <Link to="/">Welcome</Link>
-      {user ? (
-        <>
-          <Link to={`/${user.name}`}>Home</Link>
-          <Link to="/dashboard">Dashboard</Link>
-          <button onClick={handleLogout}>Logout</button>
-        </>
-      ) : (
-        <Link to="/">Login</Link>
-      )}
+    <nav className="bg-blue-600 text-white shadow-md">
+      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+        {/* Branding */}
+        <Link
+          to="/"
+          className="text-xl font-bold hover:text-blue-300 transition"
+        >
+          Insurance App
+        </Link>
+
+        {/* Navigation Links */}
+        <div className="flex items-center space-x-6">
+          {user ? (
+            <>
+              <Link
+                to={`/${user.name}`}
+                className="hover:text-blue-300 transition"
+              >
+                Profile
+              </Link>
+
+              {/* Show Properties only if user is "client" */}
+              {user.role === 'user'  && (
+                <Link
+                  to="/properties"
+                  className="hover:text-blue-300 transition"
+                >
+                  Properties
+                </Link>
+              )}
+
+              <Link
+                to="/messages"
+                className="hover:text-blue-300 transition"
+              >
+                Messages
+              </Link>
+              <button
+                onClick={handleLogout}
+                className="bg-red-500 hover:bg-red-400 text-white px-4 py-2 rounded transition"
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <Link
+              to="/"
+              className="hover:text-blue-300 transition"
+            >
+              Login
+            </Link>
+          )}
+          <Link
+            to="/contact-us"
+            className="hover:text-blue-300 transition"
+          >
+            Contact Us
+          </Link>
+        </div>
+      </div>
     </nav>
   );
 };
