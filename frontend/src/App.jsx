@@ -9,6 +9,7 @@ import PropertyPage from './pages/PropertyPage';
 import NotFoundPage from './pages/NotFoundPage';
 import MessagePage from './pages/MessagePage';
 import ContactUsPage from './pages/ContactUsPage';
+import SignupPage from './pages/SignupPage';
 
 
 // PrivateRoute Component for Role-Based Access
@@ -35,6 +36,7 @@ const App = () => {
             <Route path="/" element={<HomePage />} />
             <Route path="/contact-us" element={<ContactUsPage />} />
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/signup" element={<SignupPage />} />
 
             {/* Protected Routes */}
             <Route

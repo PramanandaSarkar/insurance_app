@@ -57,12 +57,22 @@ const Navbar = () => {
               </button>
             </>
           ) : (
-            <Link
-              to="/"
-              className="hover:text-blue-300 transition"
+            <div>
+              <Link
+              to="/login"
+              className="hover:text-blue-300 mr-5 transition"
             >
               Login
             </Link>
+            <Link
+              to="/signup"
+              className="hover:text-blue-300 transition"
+            >
+              Signup
+            </Link>
+            </div>
+
+            
           )}
           <Link
             to="/contact-us"
