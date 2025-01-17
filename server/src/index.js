@@ -1,18 +1,25 @@
 const express = require('express');
 const dotenv = require('dotenv').config();
 
+const userRoutes = require("./routes/auth.routes")
+const messageRoutes = require("./routes/message.routes")
+
 
 const PORT = process.env.PORT || 4041;;
 const app = express();
 
 
 // moddlewares
+app.use(express.json())
+// app.use(cors())
 
 
 
 
 // routes
 
+app.use('/api/users', userRoutes);
+app.use('/api/messages', messageRoutes);
 
 
 
