@@ -1,0 +1,57 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+// Define User Roles
+enum UserRole {
+  ADMIN
+  MEMBER
+  GUEST
+}
+
+// User model
+model User {
+  id       Int          @id @default(autoincrement())
+  name     String
+  email    String       @unique
+  password String
+  role     UserRole     @default(MEMBER) // Role can be 'ADMIN', 'MEMBER', or 'GUEST'
+
+  properties UserProperty[]
+  messagesSent Message[] @relation("MessagesSent")
+  messagesReceived Message[] @relation("MessagesReceived")
+}
+
+// User Properties model
+model UserProperty {
+  id      Int    @id @default(autoincrement())
+  userId  Int
+  key     String
+  value   String
+
+  user    User   @relation(fields: [userId], references: [id])
+}
+
+// Message model
+model Message {
+  id          Int      @id @default(autoincrement())
+  senderId    Int
+  receiverId  Int
+  content     String
+  createdAt   DateTime @default(now())
+
+  sender      User     @relation("MessagesSent", fields: [senderId], references: [id])
+  receiver    User     @relation("MessagesReceived", fields: [receiverId], references: [id])
+}
