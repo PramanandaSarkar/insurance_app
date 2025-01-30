@@ -38,6 +38,7 @@ const App = () => {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/messages" element={< MessagePage/>} />
+            <Route path="/property" element={< PropertyPage/>} />
 
             {/* Protected Routes */}
             <Route
@@ -48,14 +49,14 @@ const App = () => {
                 </PrivateRoute>
               }
             />
-            <Route
+            {/* <Route
               path="/properties"
               element={
                 <PrivateRoute roles={['client']}>
                   <PropertyPage />
                 </PrivateRoute>
               }
-            />
+            /> */}
             <Route
               path="/messages"
               element={

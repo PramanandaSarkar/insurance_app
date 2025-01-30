@@ -5,7 +5,7 @@ const userRoutes = require("./routes/auth.routes")
 const messageRoutes = require("./routes/message.routes")
 
 
-const PORT = process.env.PORT || 4041;;
+const PORT = process.env.PORT || 4040;;
 const app = express();
 
 
