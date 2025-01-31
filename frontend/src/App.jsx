@@ -39,6 +39,7 @@ const App = () => {
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/messages" element={< MessagePage/>} />
             <Route path="/property" element={< PropertyPage/>} />
+            <Route path="/profile" element={< ProfilePage/>} />
 
             {/* Protected Routes */}
             <Route
